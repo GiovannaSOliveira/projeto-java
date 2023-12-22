@@ -1,29 +1,17 @@
 package projetoJava.Itens;
 
-public class Item {
+public abstract class Item {
 
-	private int id;
+	
 	private String nome;
 	private float valor;
 	
 	
-	public Item (int id, String nome, float valor) {
-		this.id = id;
+	public Item (String nome, float valor) {
 		this.nome = nome;
 		this.valor = valor;
 	}
 
-
-	
-	
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 
 	public String getNome() {
@@ -45,10 +33,6 @@ public class Item {
 		this.valor = valor;
 	}
 	
-	
-	public void ver() {
-		System.out.println(id + "   " + nome + "   R$" + valor);
-	}
-	
+
 	
 }

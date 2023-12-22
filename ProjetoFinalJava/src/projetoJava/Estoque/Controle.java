@@ -2,16 +2,16 @@ package projetoJava.Estoque;
 
 import java.util.ArrayList;
 
-import projetoJava.Itens.Item;
+import projetoJava.Itens.ItemLojista;
 import projetoJava.Repository.Repositorio;
 
 public class Controle implements Repositorio {
 	
-	private ArrayList<Item> estoque = new ArrayList<Item>();
+	private ArrayList<ItemLojista> estoque = new ArrayList<ItemLojista>();
 	
 	@Override
-	public Item procurarPorId (int id) {
-		for (Item item : estoque) {
+	public ItemLojista procurarPorId (int id) {
+		for (ItemLojista item : estoque) {
 			if (item.getId() == id) {
 				return item;
 			}
@@ -22,44 +22,45 @@ public class Controle implements Repositorio {
 
 	@Override
 	public void listarTodas() {
-		for (Item item: estoque) {
-			item.ver();
+		for (ItemLojista item: estoque) {
+			item.ver(item.getId(), item.getNome(), item.getValor());
 		}
 		
 	}
 
 	@Override
-	public void adicionar(Item item) {
+	public void adicionar(ItemLojista item) {
 		estoque.add(item);
 		System.out.println("Item adicionado com sucesso.");
 	}
 
 	
 	@Override
-	public void atualizar(Item item) {
-		Item itemFound = procurarPorId(item.getId());
+	public void atualizar(ItemLojista item) {
+		ItemLojista itemFound = procurarPorId(item.getId());
 		if (itemFound != null) {
 			itemFound.setNome(item.getNome());
 			itemFound.setValor(item.getValor());
-			System.out.println("\nItem atualizado.");
+			System.out.println("\nItemLojista atualizado.");
 		}
 		else {
-			System.out.println("\nItem não encontrado.");
+			System.out.println("\nItemLojista não encontrado.");
 		}
 	}
 	
 
 	@Override
-	public void deletar(Item item) {
-		Item itemFound = procurarPorId(item.getId());
+	public void deletar(ItemLojista item) {
+		ItemLojista itemFound = procurarPorId(item.getId());
 		if (itemFound != null) {
 			estoque.remove(itemFound);
-			System.out.println("\nItem removido.");
+			System.out.println("\nItemLojista removido.");
 		}
 		else {
-			System.out.println("\nItem não encontrado.");
+			System.out.println("\nItemLojista não encontrado.");
 		}
 		
 	}
+
 	
 }

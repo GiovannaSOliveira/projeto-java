@@ -1,5 +1,7 @@
 package projetoJava;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import projetoJava.Estoque.*;
@@ -18,6 +20,7 @@ public class menuECommerce{
 		String nome;
 		float valor;
 		
+		try {
 			do {
 			System.out.println("\n*************************");
 			System.out.println("\n\t  Menu");
@@ -29,6 +32,8 @@ public class menuECommerce{
 			System.out.println("\n0 - Sair");
 			System.out.println("\n*************************");
 			opc = leia.nextInt();
+			
+			
 			leia.skip("\\R?");			
 			
 			switch (opc) {
@@ -46,7 +51,9 @@ public class menuECommerce{
 				leia.skip("\\R?");
 				valor = leia.nextFloat();
 				
-				controle.adicionar(new Item (id, nome, valor));
+				controle.adicionar(new ItemLojista (id, nome, valor));
+				
+				keyPress();
 				
 				break;
 				
@@ -63,7 +70,7 @@ public class menuECommerce{
 				id = leia.nextInt();
 		        leia.skip("\\R?");
 
-		        Item itemEncontrado = controle.procurarPorId(id);
+		        ItemLojista itemEncontrado = controle.procurarPorId(id);
 		       
 		        if (itemEncontrado != null) {
 		            System.out.println("\nDigite o novo nome do item:");
@@ -81,6 +88,7 @@ public class menuECommerce{
 		            System.out.println("\nItem não encontrado.");
 		        }
 				
+		        keyPress();
 				
 				break;
 				
@@ -99,6 +107,7 @@ public class menuECommerce{
 		        	System.out.println("\nItem não encontrado.");
 		        }
 		        
+		        keyPress();
 				
 				break;
 				
@@ -116,9 +125,18 @@ public class menuECommerce{
 			
 			}
 			while (opc !=0);
+		}
+		catch(InputMismatchException erro) {
+			System.err.println("\nFormato inválido!");
+			leia.nextLine();
+		}
+		catch (NumberFormatException erro) {
+			System.err.println("\nFormato inválido!");
+			leia.nextLine();
+		}
 			
 			
-		
+			
 		
 		
 	leia.close();	
@@ -130,6 +148,16 @@ public class menuECommerce{
 		System.out.println("Giovanna Oliveira - giovannasoliveira58@gmail.com");
 		System.out.println("https://github.com/GiovannaSOliveira\n");
 		System.out.println("*******************************************");
+	}
+	
+	public static void keyPress() {
+		try {
+			System.out.println("\n\nPressione ENTER para continuar...");
+			System.in.read();
+		}
+		catch(IOException erro) {
+			System.err.println("Tecla inválida.");
+		}
 	}
 	
 }

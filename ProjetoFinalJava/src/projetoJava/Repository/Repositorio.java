@@ -1,17 +1,17 @@
 package projetoJava.Repository;
 
-import projetoJava.Itens.Item;
+import projetoJava.Itens.ItemLojista;
 
 public interface Repositorio {
 
 	
 	//CRUD
 	
-		public Item procurarPorId(int id);
+		public ItemLojista procurarPorId(int id);
 		public void listarTodas();
-		public void adicionar (Item item);
-		public void atualizar (Item item);
-		public void deletar (Item item);
+		public void adicionar (ItemLojista item);
+		public void atualizar (ItemLojista item);
+		public void deletar (ItemLojista item);
 		
 		
 }
