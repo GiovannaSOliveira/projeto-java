@@ -20,7 +20,7 @@ public class ItemLojista extends Item{
 
 
 	public void ver(int id, String nome, float valor) {
-		System.out.println(id + "   " + nome + "   R$" + valor);
+		System.out.println(id + "\t" + nome + "\tR$" + valor);
 	}
 	
 
